@@ -9,15 +9,15 @@ pipeline{
             }
         }
 
-        stage('Build'){
-            steps{
-                
+        stage('Build artifact'){
+            steps{  
+                echo "Building artifact"
             }
         }
 
-        stage('Build'){
+        stage('Push to repo'){
             steps{
-                
+                echo "Pushing to Github"
             }
         }
     }
