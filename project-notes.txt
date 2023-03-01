@@ -1,0 +1,12 @@
+terraform 2 instances
+
+1) instance - docker/jenkins 
+
+a) собирает docker image с java приложением с задонным тегом 
+b) полученный docker image высылает в registry
+
+github link, maven, push docker hub
+
+
+2) instance - docker host
+
