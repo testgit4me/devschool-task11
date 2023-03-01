@@ -1,17 +1,22 @@
 pipeline{
     agent any
 
+    tools{
+        maven "Maven3"
+    }
+
     stages{
 
         stage('Git clone'){
             steps{
-                git branch: 'main', url: 'https://github.com/testgit4me/devschool-task11.git'
+                git branch: 'main', url: 'https://github.com/testgit4me/boxfuse-java-app.git'
             }
         }
 
         stage('Building jar'){
             steps{  
                 echo "Building artifact"
+                sh "mvn clean install"
             }
         }
 
