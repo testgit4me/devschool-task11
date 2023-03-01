@@ -9,5 +9,16 @@ pipeline{
             }
         }
 
+        stage('Build'){
+            steps{
+                
+            }
+        }
+
+        stage('Build'){
+            steps{
+                
+            }
+        }
     }
 }
