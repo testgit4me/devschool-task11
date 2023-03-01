@@ -9,13 +9,13 @@ pipeline{
             }
         }
 
-        stage('Build artifact'){
+        stage('Building jar'){
             steps{  
                 echo "Building artifact"
             }
         }
 
-        stage('Push to repo'){
+        stage('Building image'){
             steps{
                 echo "Pushing to Github"
             }
