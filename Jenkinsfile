@@ -15,8 +15,7 @@ pipeline{
 
         stage('Building jar'){
             steps{  
-                echo "Building artifact"                
-                echo "Building artifact"   
+                sh 'mvn clean install'                             
             }
         }
 
