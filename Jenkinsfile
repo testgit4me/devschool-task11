@@ -9,7 +9,7 @@ pipeline{
 
         stage('Git clone'){
             steps{
-                git branch: 'main', url: 'https://github.com/testgit4me/boxfuse-java-app.git'
+                git branch: 'master', url: 'https://github.com/testgit4me/boxfuse-java.git'
             }
         }
 
@@ -23,6 +23,12 @@ pipeline{
         stage('Building image'){
             steps{
                 echo "Pushing to Github"
+            }
+        }
+
+        stage('Publish to repository'){
+            steps{
+                echo "pushing image to docker hub"
             }
         }
     }
