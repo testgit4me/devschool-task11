@@ -19,23 +19,25 @@ pipeline{
             }
         }
 
+        // BUILDING & PUSHING THE DOCKER IMAGES INTO THE NEXUS REPOSITORY
+
         // stage('Building image'){
         //     steps{
         //         echo "Building docker image"
 
         //         script(){
-        //             dockerImage = docker.build("mrdockernnm/lesson11:$BUILD_NUMBER", ".")
+        //             dockerImage = docker.build("3.17.157.177:8083/lesson11:$BUILD_NUMBER", ".")
         //         }
         //     }
         // }
 
         // stage('Publish to repository'){
         //     steps{
-        //         echo "pushing image to docker hub"
+        //         echo "pushing image to nexus registry"
 
         //         script(){
 
-        //             docker.withRegistry('', 'login-dockerhub') {
+        //             docker.withRegistry("http://3.17.157.177:8083", 'login-nexus') {
         //                 /* Push the container to the docker hub */
         //                 dockerImage.push("$BUILD_NUMBER")
         //                 dockerImage.push("latest")
@@ -44,23 +46,25 @@ pipeline{
         //     }
         // }
 
+        // BUILDING & PUSHING THE DOCKER IMAGES INTO THE DOCKER HUB
+
         stage('Building image'){
             steps{
                 echo "Building docker image"
 
                 script(){
-                    dockerImage = docker.build("3.17.157.177:8083/lesson11:$BUILD_NUMBER", ".")
+                    dockerImage = docker.build("mrdockernnm/lesson11:$BUILD_NUMBER", ".")
                 }
             }
         }
 
         stage('Publish to repository'){
             steps{
-                echo "pushing image to nexus registry"
+                echo "pushing image to docker hub"
 
                 script(){
 
-                    docker.withRegistry("http://3.17.157.177:8083", 'login-nexus') {
+                    docker.withRegistry('', 'login-dockerhub') {
                         /* Push the container to the docker hub */
                         dockerImage.push("$BUILD_NUMBER")
                         dockerImage.push("latest")
@@ -68,7 +72,5 @@ pipeline{
                 }
             }
         }
-
- 
     }
 }
