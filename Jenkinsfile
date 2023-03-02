@@ -24,7 +24,7 @@ pipeline{
                 echo "Building docker image"
 
                 script(){
-                    dockerImage = docker.build("test-image:$BUILD_NUMBER", ".")
+                    dockerImage = docker.build("mrdockernnm/lesson11:$BUILD_NUMBER", ".")
                 }
             }
         }
