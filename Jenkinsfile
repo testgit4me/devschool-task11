@@ -21,7 +21,7 @@ pipeline{
 
         stage('Building image'){
             steps{
-                echo "Pushing to Github"
+                echo "Building docker image"
             }
         }
 
