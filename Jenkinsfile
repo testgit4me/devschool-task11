@@ -19,6 +19,7 @@ pipeline{
             }
         }
 
+        //
         // BUILDING & PUSHING THE DOCKER IMAGES INTO THE NEXUS REPOSITORY
 
         // stage('Building image'){
