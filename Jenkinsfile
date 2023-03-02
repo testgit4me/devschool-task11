@@ -77,12 +77,12 @@ pipeline{
         stage('Run the container'){
             steps{
                 echo "running the container on the prod server"
-                echo "test"
 
-                sh 'ssh ubuntu@172.31.3.227 docker stop java-app'
-                sh 'ssh ubuntu@172.31.3.227 docker rm java-app'
-                sh 'ssh ubuntu@172.31.3.227 docker run --name java-app -p 8080:8080 -d mrdockernnm/lesson11:latest'  
-
+                sh '''ssh ubuntu@172.31.3.227 << EOL
+                    docker stop java-app
+                    docker rm java-app
+                    docker run --name java-app -p 8080:8080 -d mrdockernnm/lesson11:latest
+                EOL'''
             }
         }
     }
