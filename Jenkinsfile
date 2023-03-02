@@ -77,6 +77,7 @@ pipeline{
         stage('Run the container'){
             steps{
                 echo "running the container on the prod server"
+                echo "test"
 
                 sh 'ssh ubuntu@172.31.3.227 docker stop java-app'
                 sh 'ssh ubuntu@172.31.3.227 docker rm java-app'
