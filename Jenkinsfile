@@ -80,11 +80,11 @@ pipeline{
 
                 script(){
 
-                    sh '''ssh ubuntu@172.31.3.227 << EOF
+                    sh '''ssh ubuntu@172.31.3.227 << EOL
                         docker stop java-app
                         docker rm java-app
                         docker run --name java-app -p 8080:8080 -d mrdockernnm/lesson11:latest
-                    EOF'''
+                    EOL'''
 
                 }
             }
