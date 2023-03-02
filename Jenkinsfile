@@ -78,11 +78,10 @@ pipeline{
             steps{
                 echo "running the container on the prod server"
 
-                sh '''ssh ubuntu@172.31.3.227 << EOF
-                    docker stop java-app
-                    docker rm java-app
-                    docker run --name java-app -p 8080:8080 -d mrdockernnm/lesson11:latest
-                EOF'''
+                sh 'ssh ubuntu@172.31.3.227 docker stop java-app'
+                sh 'ssh ubuntu@172.31.3.227 docker rm java-app'
+                sh 'ssh ubuntu@172.31.3.227 docker run --name java-app -p 8080:8080 -d mrdockernnm/lesson11:latest'  
+
             }
         }
     }
