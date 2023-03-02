@@ -58,14 +58,14 @@ pipeline{
             steps{
                 echo "pushing image to nexus registry"
 
-                // script(){
+                script(){
 
-                //     docker.withRegistry('', 'login-dockerhub') {
-                //         /* Push the container to the docker hub */
-                //         dockerImage.push("$BUILD_NUMBER")
-                //         dockerImage.push("latest")
-                //     }
-                // }
+                    docker.withRegistry('3.17.157.177:8083', 'login-nexus') {
+                        /* Push the container to the docker hub */
+                        dockerImage.push("$BUILD_NUMBER")
+                        dockerImage.push("latest")
+                    }
+                }
             }
         }
 
