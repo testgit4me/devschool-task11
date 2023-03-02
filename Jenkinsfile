@@ -22,6 +22,10 @@ pipeline{
         stage('Building image'){
             steps{
                 echo "Building docker image"
+
+                script(){
+                    dockerImage = docker.build("test-image", ".")
+                }
             }
         }
 
