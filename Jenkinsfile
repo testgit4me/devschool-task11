@@ -9,7 +9,7 @@ pipeline{
 
         stage('Git clone'){
             steps{
-                git branch: 'master', url: 'https://github.com/testgit4me/boxfuse-java.git'
+                git branch: 'main', url: 'https://github.com/testgit4me/devschool-task11.git'
             }
         }
 
