@@ -35,9 +35,9 @@ pipeline{
 
                 script(){
 
-                    docker.withRegistry('.', 'login-dockerhub') {
+                    docker.withRegistry('', 'login-dockerhub') {
                     /* Push the container to the docker hub */
-                    dockerImage.push()
+                    dockerImage.push($env.BUILD_NUMBER)
                     }
                 }
             }
