@@ -12,14 +12,10 @@ github link, maven, push docker hub
 
 
 
-
-install awscli
-create IAM user
-create ECR repo
-
 plugin docker pipeline
 aws sdk for credentials
 
+1)
 
 docker run -p 8081:8080 -d mrdockernnm/lesson11:21
 docker build -t mrdockernnm/lesson11:21 .      
@@ -40,16 +36,17 @@ nexus as container
 sudo apt install docker.io
 sudo usermod -aG docker ubuntu
 logout
+login
 
 docker volume create --name nexus-data
 docker run -p 8081:8081 -p 8083:8083 --name nexus-docker -v nexus-data:/nexus-data -d sonatype/nexus3
 
 login to nexus
-docker-hosted repo created
+lesson11 repo created
 realms -> Docker bearer token
 HTTP 8083
 
-Add Insecure Registry to Docker
+Add Insecure Registry to Docker in jenkins
 To add an insecure docker registry, add the file /etc/docker/daemon.json with the following content:
 
 {
@@ -57,7 +54,16 @@ To add an insecure docker registry, add the file /etc/docker/daemon.json with th
 }
 
 and then restart docker.
+chmod 666 /var/run/docker.sock
 
+docker build -t 3.17.157.177:8083/lesson11:27 .
+docker push 3.17.157.177:8083/lesson11:27
 
+dockerImage = docker.build("3.17.157.177:8083/lesson11:$BUILD_NUMBER", ".")
 
+docker.withRegistry("http://3.17.157.177:8083", 'login-nexus') {
+  /* Push the container to nexus */
+  dockerImage.push("$BUILD_NUMBER")
+  dockerImage.push("latest")
+}
 
