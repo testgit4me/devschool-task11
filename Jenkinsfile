@@ -32,6 +32,14 @@ pipeline{
         stage('Publish to repository'){
             steps{
                 echo "pushing image to docker hub"
+
+                script(){
+
+                    docker.withRegistry('mrdockernnm/lesson11', 'login-dockerhub') {
+                    /* Push the container to the docker hub */
+                    dockerImage.push("$BUILD_NUMBER")
+                    }
+                }
             }
         }
     }
