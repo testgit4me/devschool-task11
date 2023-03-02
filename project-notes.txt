@@ -9,3 +9,55 @@ github link, maven, push docker hub
 
 2) instance - docker host
 
+
+
+
+
+install awscli
+create IAM user
+create ECR repo
+
+plugin docker pipeline
+aws sdk for credentials
+
+
+docker run -p 8081:8080 -d mrdockernnm/lesson11:21
+docker build -t mrdockernnm/lesson11:21 .      
+docker login
+docker push mrdockernnm/lesson11:21
+
+dockerImage = docker.build("mrdockernnm/lesson11:$BUILD_NUMBER", ".")
+
+docker.withRegistry('', 'login-dockerhub') {
+  /* Push the container to the docker hub */
+  dockerImage.push("$BUILD_NUMBER")
+  dockerImage.push("latest")
+}
+
+2)
+
+nexus as container
+sudo apt install docker.io
+sudo usermod -aG docker ubuntu
+logout
+
+docker volume create --name nexus-data
+docker run -p 8081:8081 -p 8083:8083 --name nexus-docker -v nexus-data:/nexus-data -d sonatype/nexus3
+
+login to nexus
+docker-hosted repo created
+realms -> Docker bearer token
+HTTP 8083
+
+Add Insecure Registry to Docker
+To add an insecure docker registry, add the file /etc/docker/daemon.json with the following content:
+
+{
+  "insecure-registries" : ["3.17.157.177:8083"]
+}
+
+and then restart docker.
+
+
+
+

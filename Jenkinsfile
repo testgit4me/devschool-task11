@@ -19,29 +19,56 @@ pipeline{
             }
         }
 
+        // stage('Building image'){
+        //     steps{
+        //         echo "Building docker image"
+
+        //         script(){
+        //             dockerImage = docker.build("mrdockernnm/lesson11:$BUILD_NUMBER", ".")
+        //         }
+        //     }
+        // }
+
+        // stage('Publish to repository'){
+        //     steps{
+        //         echo "pushing image to docker hub"
+
+        //         script(){
+
+        //             docker.withRegistry('', 'login-dockerhub') {
+        //                 /* Push the container to the docker hub */
+        //                 dockerImage.push("$BUILD_NUMBER")
+        //                 dockerImage.push("latest")
+        //             }
+        //         }
+        //     }
+        // }
+
         stage('Building image'){
             steps{
                 echo "Building docker image"
 
                 script(){
-                    dockerImage = docker.build("mrdockernnm/lesson11:$BUILD_NUMBER", ".")
+                    dockerImage = docker.build("3.17.157.177:8083/lesson11:$BUILD_NUMBER", ".")
                 }
             }
         }
 
         stage('Publish to repository'){
             steps{
-                echo "pushing image to docker hub"
+                echo "pushing image to nexus registry"
 
-                script(){
+                // script(){
 
-                    docker.withRegistry('', 'login-dockerhub') {
-                        /* Push the container to the docker hub */
-                        dockerImage.push("$BUILD_NUMBER")
-                        dockerImage.push("latest")
-                    }
-                }
+                //     docker.withRegistry('', 'login-dockerhub') {
+                //         /* Push the container to the docker hub */
+                //         dockerImage.push("$BUILD_NUMBER")
+                //         dockerImage.push("latest")
+                //     }
+                // }
             }
         }
+
+ 
     }
 }
