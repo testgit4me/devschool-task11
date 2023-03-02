@@ -60,7 +60,7 @@ pipeline{
 
                 script(){
 
-                    docker.withRegistry("3.17.157.177:8083", 'login-nexus') {
+                    docker.withRegistry("http://3.17.157.177:8083", 'login-nexus') {
                         /* Push the container to the docker hub */
                         dockerImage.push("$BUILD_NUMBER")
                         dockerImage.push("latest")
