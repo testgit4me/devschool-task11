@@ -35,7 +35,7 @@ pipeline{
 
                 script(){
 
-                    docker.withRegistry('mrdockernnm/lesson11', 'login-dockerhub') {
+                    docker.withRegistry('.', 'login-dockerhub') {
                     /* Push the container to the docker hub */
                     dockerImage.push("$BUILD_NUMBER")
                     }
